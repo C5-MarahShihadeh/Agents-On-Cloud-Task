@@ -5,14 +5,14 @@ const {
     addComments,
     viewComments,
     removeComments,
-    viewCommentsByRoomId
+    viewCommentsByBookId
 } = require("../controllers/comments");
 
 const commentsRouter = express.Router();
 
-commentsRouter.post("/:room_id", authentication, addComments);
+commentsRouter.post("/:book_id", authentication, addComments);
 commentsRouter.get("/", authentication, viewComments);
-commentsRouter.put("/:room_id", authentication, removeComments);
-commentsRouter.get("/:room_id", authentication, viewCommentsByRoomId);
+commentsRouter.put("/:id", authentication, removeComments);
+commentsRouter.get("/:book_id", authentication, viewCommentsByBookId);
 
 module.exports = commentsRouter;

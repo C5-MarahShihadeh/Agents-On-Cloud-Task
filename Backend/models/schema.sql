@@ -22,7 +22,7 @@ CREATE TABLE users(
     PRIMARY KEY (id)
 );
 
- -- Create a table called books in the database
+-- Create a table called books in the database
 CREATE TABLE book (
     id INT AUTO_INCREMENT NOT NULL,
     bookName VARCHAR(255),
@@ -33,9 +33,7 @@ CREATE TABLE book (
     PRIMARY KEY (id)
 );
 
-
 -- - Create a table called permissions
-
 CREATE TABLE permissions(
     id int auto_increment NOT NULL,
     permission varchar (255) NOT NULL,
@@ -44,7 +42,6 @@ CREATE TABLE permissions(
 );
 
 -- - Create a table called roles_permissions
-
 CREATE TABLE roles_permissions(
     id int auto_increment NOT NULL,
     permission_id INT,
@@ -54,13 +51,15 @@ CREATE TABLE roles_permissions(
     is_deleted TINYINT DEFAULT 0,
     primary key (id)
 );
--- - Create a table called comments
 
+-- - Create a table called comments
 CREATE TABLE comments(
     id int auto_increment NOT NULL,
     comment VARCHAR(255),
+    book_id INT,
     user_id INT,
     foreign key (user_id) references users(id),
+    foreign key (book_id) references book(id),
     is_deleted TINYINT DEFAULT 0,
     primary key (id)
 );
