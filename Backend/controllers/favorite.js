@@ -76,9 +76,7 @@ const removeFromFavorite = (req, res) => {
   const query = `UPDATE favorite SET is_deleted=1 
     WHERE user_id=? AND book_id=?;`;
   const data = [user_id, book_id];
-  console.log("data", data);
   connection.query(query, data, (error, result) => {
-    console.log(error);
     if (error) {
       return res.status(500).json({
         success: false,

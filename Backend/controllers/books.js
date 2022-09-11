@@ -129,7 +129,6 @@ const updatebookById = (req, res) => {
 
         id,
       ];
-console.log(result);
       connection.query(query, data, (err, result) => {
         if (result.affectedRows != 0)
 

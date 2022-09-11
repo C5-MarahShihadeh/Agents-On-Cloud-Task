@@ -8,9 +8,7 @@ const addAndUpdateToCart = (req, res) => {
 
   const query = `SELECT * FROM cart WHERE book_id=? AND user_id=? AND is_deleted = 0 `;
   const data = [book_id, user_id];
-  console.log("data", data);
   connection.query(query, data, (err, result) => {
-    console.log(result);
     if (result.length) {
       result[0].amount = quantity + result[0].amount;
       const query = `UPDATE cart SET amount=? WHERE book_id=? AND is_deleted = 0`;
@@ -82,9 +80,7 @@ const removefromcart = (req, res) => {
   const query = `UPDATE cart SET is_deleted=1 
     WHERE user_id=? AND book_id=?;`;
   const data = [user_id, book_id];
-  console.log("data", data);
   connection.query(query, data, (error, result) => {
-    console.log(error);
     if (error) {
       return res.status(500).json({
         success: false,
@@ -126,7 +122,7 @@ const removeAndDecreas = (req, res) => {
                 massage: "Server error",
                 err: err,
               });
-            } 
+            }
           });
         }
         if (results.affectedRows != 0) {
@@ -155,7 +151,6 @@ const emptyCart = (req, res) => {
     WHERE user_id=?;`;
   const data = [user_id];
   connection.query(query, data, (error, result) => {
-    console.log(error);
     if (error) {
       return res.status(500).json({
         success: false,
