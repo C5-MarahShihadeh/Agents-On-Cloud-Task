@@ -6,6 +6,8 @@ require("./models/db");
 //routers
 const bookRouter = require("./routes/books");
 const commentsRouter = require("./routes/comments");
+const favoriteListRouter = require("./routes/favorite");
+const cartRouter = require("./routes/cart");
 
 const registerRouter = require("./routes/register");
 const loginRouter = require("./routes/login");
@@ -28,6 +30,8 @@ app.use("/permission", permissionRouter);
 
 app.use("/book", bookRouter);
 app.use("/comments", commentsRouter);
+app.use("/favorite", favoriteListRouter);
+app.use("/cart", cartRouter);
 
 
 const PORT = process.env.PORT || 5000;

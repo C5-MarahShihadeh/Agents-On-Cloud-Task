@@ -63,3 +63,26 @@ CREATE TABLE comments(
     is_deleted TINYINT DEFAULT 0,
     primary key (id)
 );
+
+-- - Create a table called favorite in the database
+CREATE TABLE favorite(
+    id INT AUTO_INCREMENT NOT NULL,
+    book_id INT,
+    user_id INT,
+    foreign key (user_id) references users(id),
+    foreign key (book_id) references book(id),
+    is_deleted TINYINT DEFAULT 0,
+    PRIMARY KEY (id)
+);
+
+-- - Create a table called cart in the database
+CREATE TABLE cart(
+    id int auto_increment NOT NULL,
+    book_id INT,
+    user_id INT,
+    amount INT DEFAULT 1,
+    foreign key (book_id) references book(id),
+    foreign key (user_id) references users(id),
+    is_deleted TINYINT DEFAULT 0,
+    primary key (id)
+);
