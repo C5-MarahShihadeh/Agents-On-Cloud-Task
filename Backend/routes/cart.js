@@ -9,11 +9,11 @@ const {
   emptyCart
 } = require("../controllers/cart");
 
-const basketRouter = express.Router();
+const cartRouter = express.Router();
 
-basketRouter.post("/:book_id", authentication, addAndUpdateToCart);
-basketRouter.get("/", authentication, viewCart);
-basketRouter.put("/:book_id", authentication, removefromcart);
-basketRouter.put("/cart/:book_id", authentication, removeAndDecreas);
-basketRouter.delete("/empty",authentication,emptyCart);
-module.exports = basketRouter;
+cartRouter.post("/:book_id", authentication, addAndUpdateToCart);
+cartRouter.get("/", authentication, viewCart);
+cartRouter.put("/:book_id", authentication, removefromcart);
+cartRouter.put("/cart/:book_id", authentication, removeAndDecreas);
+cartRouter.delete("/empty",authentication,emptyCart);
+module.exports = cartRouter;

@@ -126,13 +126,7 @@ const removeAndDecreas = (req, res) => {
                 massage: "Server error",
                 err: err,
               });
-            } else {
-              // return res.status(201).json({
-              //   success: true,
-              //   message: "deleted from cart",
-              //   result: resultss,
-              // });
-            }
+            } 
           });
         }
         if (results.affectedRows != 0) {
@@ -171,7 +165,7 @@ const emptyCart = (req, res) => {
     } else {
       res.status(200).json({
         success: true,
-        massage: `books removed `,
+        massage: `Cart is empty `,
         result: result,
       });
     }
