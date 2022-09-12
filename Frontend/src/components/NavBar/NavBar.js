@@ -5,8 +5,8 @@ import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import {logout} from "../../redux/reducers/auth"
-import { AiOutlineUser } from 'react-icons/ai';
+import { logout } from "../../redux/reducers/auth";
+import { AiOutlineUser } from "react-icons/ai";
 
 function CollapsibleExample() {
   const [view, setView] = useState(false);
@@ -19,12 +19,10 @@ function CollapsibleExample() {
   const favoriteState = useSelector((state) => {
     return {
       favorite: state.favorite.favorite,
-    
     };
   });
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
 
   return (
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
@@ -34,22 +32,38 @@ function CollapsibleExample() {
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto"></Nav>
           <Nav>
-            {isLoggedIn!==true?<div>
-            <NavDropdown title={<AiOutlineUser/>} id="collasible-nav-dropdown">
-              <NavDropdown.Item href="/login">login</NavDropdown.Item>
-              <NavDropdown.Item href="/register">Register</NavDropdown.Item>
-            </NavDropdown></div>:(<>  <Nav.Link eventKey={2} href="/favorite">
-             Favorite
-            </Nav.Link>
-            <Nav.Link eventKey={2} href="/cart">
-             Cart
-            </Nav.Link>
-            <Nav.Link onClick={()=>{
-                dispatch(logout());
-                navigate("/");
-            }} >Logout</Nav.Link>
-            </>)}
-            
+            {isLoggedIn !== true ? (
+              <div>
+                <NavDropdown
+                  title={<AiOutlineUser />}
+                  id="collasible-nav-dropdown"
+                >
+                  <NavDropdown.Item href="/login">login</NavDropdown.Item>
+                  <NavDropdown.Item href="/register">Register</NavDropdown.Item>
+                </NavDropdown>
+              </div>
+            ) : (
+              <>
+                
+                <Nav.Link eventKey={2} href="/favorite">
+                  Favorite
+                </Nav.Link>
+                <Nav.Link eventKey={2} href="/cart">
+                  Cart
+                </Nav.Link>
+                <Nav.Link eventKey={2} href="/sell">
+                  Sell Books
+                </Nav.Link>
+                <Nav.Link
+                  onClick={() => {
+                    dispatch(logout());
+                    navigate("/");
+                  }}
+                >
+                  Logout
+                </Nav.Link>
+              </>
+            )}
           </Nav>
         </Navbar.Collapse>
       </Container>

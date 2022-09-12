@@ -33,8 +33,6 @@ const Homepage = () => {
       bookName: state.books.bookName,
     };
   });
-  
-
 
   const addToCart = (String) => {
     axios
@@ -134,13 +132,15 @@ const Homepage = () => {
     <div className="hj">
       <div>
         <img
-          className="img=responsive"
+          className="img-responsive"
           style={{ width: "100%", height: "30rem" }}
           src={img}
         />
       </div>
-      <div className="Book-Continer"></div>
-
+      <div className="Book-Continer">
+     <h4 className="title">Check Our Books</h4>   
+      </div>
+<br/>
       <div className="grid">
         {show &&
           books.map((element, index) => {
@@ -201,23 +201,23 @@ const Homepage = () => {
           <div className="pagenation">
             <a href="#l">
               <button
-                className="bttt3"
+                className="back"
                 onClick={() => {
                   back();
                 }}
               >
-                <BsArrowLeftSquareFill className="bttt3" />
+                <BsArrowLeftSquareFill className="back" />
               </button>
             </a>
             {page}
             <a href="#l">
               <button
-                className="bttt3"
+                className="next"
                 onClick={() => {
                   next();
                 }}
               >
-                <BsArrowRightSquareFill className="bttt3" />
+                <BsArrowRightSquareFill className="next" />
               </button>
             </a>
           </div>
