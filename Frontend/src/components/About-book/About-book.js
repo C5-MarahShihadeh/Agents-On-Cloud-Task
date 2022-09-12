@@ -8,6 +8,7 @@ import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import { useDispatch, useSelector } from "react-redux";
 import Modal from "react-bootstrap/Modal";
+import { setcomments } from "../../redux/reducers/comments";
 
 function ImgOverlayExample() {
   const dispatch = useDispatch();
@@ -20,6 +21,7 @@ function ImgOverlayExample() {
   const [price, setPrice] = useState("");
   const [smShow, setSmShow] = useState(false);
   const [lgShow, setLgShow] = useState(false);
+  const [comment,setComment]=useState("")
   const navigate = useNavigate();
 
   const handleClose = () => setShow(false);
@@ -38,6 +40,12 @@ function ImgOverlayExample() {
       bookName: state.books.bookName,
     };
   });
+  const { comments } = useSelector((state) => {
+    return {
+      comments: state.comments.comments,
+    };
+  });
+
   const gatBookById = () => {
     axios
       .get(`http://localhost:5000/book/${id}`)
@@ -51,6 +59,59 @@ function ImgOverlayExample() {
       });
   };
 
+
+  
+  const createComment = (String) => {
+    axios
+      .post(
+        `http://localhost:5000/comments/${String}`,
+        {comment},
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
+      .then((result) => {
+        console.log(result.data.result,"knk");
+    
+      })
+      .catch((err) => {
+        console.log(err);
+        setMessage(err.message);
+      });
+  };
+
+
+  const viewCommentsByBookId=(id)=>{
+    axios
+    .get(`http://localhost:5000/comments/${id}`,{
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+    .then((result) => {
+      console.log(result.data.result,"mmmmm");
+      dispatch(setcomments(result.data.result));
+      setMessage(result.data.message);
+      setShow(true);
+    })
+    .catch((err) => {
+      setMessage(err.message);
+    });
+  }
+  
+  const m=comments&&comments.map((element,index)=>{
+    return(
+  <div key={index}>
+  <Card>
+        <Card.Body>{element.comment}</Card.Body>
+      </Card>
+     <br/>
+    </div>
+    )
+  })
+  
   const updatebooks = (String) => {
     axios
       .put(
@@ -101,6 +162,7 @@ function ImgOverlayExample() {
 
   useEffect(() => {
     gatBookById();
+    viewCommentsByBookId();
   }, []);
 
   return (
@@ -121,10 +183,28 @@ function ImgOverlayExample() {
                 <Card.Title>{element.bookName}</Card.Title>
                 <Card.Text>{element.description}</Card.Text>
                 <Card.Text>{element.price} JD</Card.Text>
+<label>Add Comment</label><br/>
+<input onChange={(e)=>{
+  setComment(e.target.value);
+}} placeholder="comment......" style={{width:"30rem",height:"2.3rem"}}/> <Button onClick={()=>{
+
+  createComment(element.id);
+}}>Add</Button>{" "}
+
+<Button onClick={(e)=>{
+                  e.preventDefault()
+
+                  viewCommentsByBookId(element.id)
+        }}>View Comments</Button>
+
+<br/>
+<br/>
+
                 {localStorage.getItem('userId')!=element.user_id
 ?(<></>):(<>
 
                 <>
+             
                   <Button onClick={handleShow} variant="primary">
                     Edit
                   </Button>
@@ -206,6 +286,7 @@ setPrice(e.target.value);
           }}>Confirm</Button></Modal.Body>
       </Modal></>
       </>)}
+      <div>{m}</div>
               </Card.Body>
             </Card>
           );
