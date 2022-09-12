@@ -45,6 +45,32 @@ const getAllbooksss = (req, res) => {
 };
 
 
+const getBookById = (req, res) => {
+  const id = req.params.id;
+
+
+  const query = `SELECT * FROM book WHERE id=? AND is_deleted=0`;
+  const data = [id];
+
+
+  connection.query(query,data, (err, result) => {
+    if (err) {
+      return res.status(500).json({
+        success: false,
+        massage: "server error",
+        err: err,
+      });
+    }
+
+    return res.status(200).json({
+      success: true,
+      massage: "Book By Id",
+      result: result,
+    });
+  });
+};
+
+
 const getAllbook = (req, res) => {
   // limit as 6
   const limit = 6;
@@ -175,5 +201,6 @@ module.exports = {
   deletebookById,
   updatebookById,
   getbooksByTitle,
-  getAllbooksss
+  getAllbooksss,
+  getBookById
 };

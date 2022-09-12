@@ -7,7 +7,7 @@ import Homepage from "../src/components/Home/Home";
 import FavoriteList from "./components/FavoriteList/FavoriteList";
 import Cart from "./components/Cart/cart";
 import AddBook from "./components/AddBook/AddBook";
-
+import ImgOverlayExample from "./components/About-book/About-book"
 function App() {
   return (
     <div className="App">
@@ -35,7 +35,7 @@ function App() {
           element={
             <>
               <CollapsibleExample />
-              <Homepage />
+              <Homepage  />
             </>
           }
         />
@@ -68,6 +68,16 @@ function App() {
             <>
               <CollapsibleExample />
               <AddBook />
+            </>
+          }
+        />
+
+<Route
+          path="/book/:id"
+          element={
+            <>
+              <CollapsibleExample />
+              < ImgOverlayExample/>
             </>
           }
         />

@@ -4,14 +4,12 @@ import { useNavigate } from "react-router-dom";
 import "./Home.css";
 import { setbooks, setbookName } from "../../redux/reducers/books";
 import Container from "react-bootstrap/Container";
-
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
-import img from "./homee.jpg";
+import imge from "./homee.jpg";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
-
 import { BsArrowLeftSquareFill, BsArrowRightSquareFill } from "react-icons/bs";
+
 
 const Homepage = () => {
   const navigate = useNavigate();
@@ -134,7 +132,7 @@ const Homepage = () => {
         <img
           className="img-responsive"
           style={{ width: "100%", height: "30rem" }}
-          src={img}
+          src={imge}
         />
       </div>
       <div className="Book-Continer">
@@ -146,7 +144,11 @@ const Homepage = () => {
           books.map((element, index) => {
             return (
               <Container>
-                <Card
+                <Card  onClick={() => {
+                navigate(`/book/${element.id}`);
+               
+
+              }}
                   style={{ width: "18rem", marginBottom: "3rem" }}
                   key={index}
                   className="box"
@@ -159,9 +161,7 @@ const Homepage = () => {
                   />
                   <Card.Body>
                     <Card.Title>{element.bookName}</Card.Title>
-                    <Card.Text style={{ height: "8rem" }}>
-                      {element.description}
-                    </Card.Text>
+                  
                     <Card.Text style={{ height: "2rem" }}>
                       {element.price} JD
                     </Card.Text>
