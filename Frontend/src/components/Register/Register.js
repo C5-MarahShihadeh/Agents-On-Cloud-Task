@@ -52,11 +52,11 @@ function BasicExample() {
         onClick={(e) => {
           e.preventDefault();
           axios
-            .post("http://localhost:5000/register/", {
+            .post("http://localhost:5000/signup/", {
               email,
               password,
               userName,
-              role_id: 1,
+              role_id: 2,
             })
 
             .then((result) => {

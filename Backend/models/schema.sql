@@ -29,6 +29,9 @@ CREATE TABLE book (
     img VARCHAR(255),
     description VARCHAR(255),
     price INT,
+        user_id INT,
+    FOREIGN KEY (user_id) REFERENCES users(id),
+
     is_deleted TINYINT DEFAULT 0,
     PRIMARY KEY (id)
 );

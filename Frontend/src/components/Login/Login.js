@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import {login,setUsers} from "../../redux/reducers/auth"
+import {login,setUsers,userId} from "../../redux/reducers/auth"
 function BasicExample() {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
@@ -51,13 +51,12 @@ function BasicExample() {
                   .then((result) => {
                     if (result.data.success) {
                       setMessage("login succefull");
+                      console.log(result.data.result[0].id);
                       dispatch(login(result.data.token));
-                      console.log(result.data.result[0].role_id );
-                      if (result.data.result[0].role_id === 2) {
-                        navigate("/adminPanel");
-                      } else {
+                      dispatch(userId(result.data.result[0].id));
+                      localStorage.setItem("userId", result.data.result[0].id);
                         navigate("/");
-                      }
+                      
                     }
                   })
             

@@ -42,8 +42,9 @@ function ImgOverlayExample() {
     axios
       .get(`http://localhost:5000/book/${id}`)
       .then((result) => {
-        console.log(result.data.result);
+        console.log(result.data.result,"jikjo");
         setBook(result.data.result);
+        
       })
       .catch((err) => {
         setMessage(err.message);
@@ -120,6 +121,9 @@ function ImgOverlayExample() {
                 <Card.Title>{element.bookName}</Card.Title>
                 <Card.Text>{element.description}</Card.Text>
                 <Card.Text>{element.price} JD</Card.Text>
+                {localStorage.getItem('userId')!=element.user_id
+?(<></>):(<>
+
                 <>
                   <Button onClick={handleShow} variant="primary">
                     Edit
@@ -201,6 +205,7 @@ setPrice(e.target.value);
 
           }}>Confirm</Button></Modal.Body>
       </Modal></>
+      </>)}
               </Card.Body>
             </Card>
           );

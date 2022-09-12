@@ -36,7 +36,11 @@ function AddBook() {
   
     const addBook=()=>{
         axios
-        .post(`http://localhost:5000/book`, {bookName,img,description,price})
+        .post(`http://localhost:5000/book`, {bookName,img,description,price}, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
         .then((result) => {
           console.log(result.data.result, "addBook");
           dispatch(addbooks(result.data.result));
@@ -76,8 +80,9 @@ setPrice(e.target.value)
       </Form.Group>
       <Button onClick={(e)=>{
         e.preventDefault()
-        addBook()
-      }} variant="primary" type="submit">
+        addBook();
+        navigate("/")
+      }} variant="outline-dark"type="submit">
         Add
       </Button>
     </Form>

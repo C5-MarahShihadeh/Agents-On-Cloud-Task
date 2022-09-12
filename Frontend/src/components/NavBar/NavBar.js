@@ -7,6 +7,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { logout } from "../../redux/reducers/auth";
 import { AiOutlineUser } from "react-icons/ai";
+import { BsCart,BsHeartFill } from "react-icons/bs";
+
 
 function CollapsibleExample() {
   const [view, setView] = useState(false);
@@ -46,10 +48,10 @@ function CollapsibleExample() {
               <>
                 
                 <Nav.Link eventKey={2} href="/favorite">
-                  Favorite
+                  Favorite <BsHeartFill/>
                 </Nav.Link>
                 <Nav.Link eventKey={2} href="/cart">
-                  Cart
+                  Cart <BsCart/>
                 </Nav.Link>
                 <Nav.Link eventKey={2} href="/sell">
                   Sell Books

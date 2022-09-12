@@ -2,11 +2,13 @@ const connection = require("../models/db");
 
 const createNewbook = (req, res) => {
   const { bookName, img, description,price} = req.body;
+  const user_id = req.token.userId;
+
   const query = `INSERT INTO book (bookName,
     img,
-    description,price
-  ) VALUES (?,?,?,?);`;
-  const data = [bookName, img, description,price];
+    description,price,user_id
+  ) VALUES (?,?,?,?,?);`;
+  const data = [bookName, img, description,price,user_id];
   connection.query(query, data, (err, result) => {
     if (err) {
       return res.status(500).json({

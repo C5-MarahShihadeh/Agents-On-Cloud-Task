@@ -9,6 +9,7 @@ import Card from "react-bootstrap/Card";
 import imge from "./homee.jpg";
 import { useDispatch, useSelector } from "react-redux";
 import { BsArrowLeftSquareFill, BsArrowRightSquareFill } from "react-icons/bs";
+import { BsHeart,BsCartPlus } from 'react-icons/bs';
 
 
 const Homepage = () => {
@@ -144,16 +145,16 @@ const Homepage = () => {
           books.map((element, index) => {
             return (
               <Container>
-                <Card  onClick={() => {
+                <Card  
+                  style={{ width: "18rem", marginBottom: "3rem",cursor:"pointer" }}
+                  key={index}
+                  className="box"
+                >
+                  <Card.Img onClick={() => {
                 navigate(`/book/${element.id}`);
                
 
               }}
-                  style={{ width: "18rem", marginBottom: "3rem" }}
-                  key={index}
-                  className="box"
-                >
-                  <Card.Img
                     className="img=responsive"
                     style={{ height: "20rem" }}
                     variant="top"
@@ -167,21 +168,19 @@ const Homepage = () => {
                     </Card.Text>
                     {isLoggedIn == true ? (
                       <>
-                        <Button
+                        <Button style={{marginLeft:"4rem"}}
                           onClick={() => {
                             addToFavoriteList(element.id);
                           }}
-                          variant="primary"
-                        >
-                          Add To Favorite
+                          variant="outline-danger"                        >
+                       Favorite <BsHeart/>
                         </Button>
-                        <Button
+                        <Button style={{marginLeft:".5rem"}}
                           onClick={() => {
                             addToCart(element.id);
                           }}
-                          variant="primary"
-                        >
-                          Add To Cart
+                          variant="outline-secondary"                        >
+                      Cart <BsCartPlus/>
                         </Button>
                       </>
                     ) : (
