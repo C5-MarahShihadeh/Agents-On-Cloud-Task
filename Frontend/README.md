@@ -1,70 +1,99 @@
-# Getting Started with Create React App
+<p align="center">
+  <a href="" rel="noopener">
+ <img width=300px height=190px src="https://mercuriusuva.nl/wp-content/uploads/2021/08/BOOK-SALE-POST-FOR-THE-WEBSITE-1.jpg" alt="Project logo"></a>
+</p>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<h3 align="center">Second Hand Books</h3>
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+<p align="center"> An online bookshop website was developed to help customers to buy and sell books .
+    <br> 
+</p>
 
-### `npm start`
+## 📝 Table of Contents
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- [About](#about)
+- [Getting Started](#getting_started)
+- [Usage](#usage)
+- [Built Using](#built_using)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
+## 🧐 About <a name = "about"></a>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+ An online responsive bookshop website which name is Second Hand Books was developed to help readers to buy and sell books which are used.
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 🏁 Getting Started <a name = "getting_started"></a>
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
-### `npm run eject`
+### Prerequisites
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- VS code <a href="https://code.visualstudio.com/download">download from here</a>
+- Git Bash <a href="https://git-scm.com/">download from here</a>
+- MySQL <a href="https://dev.mysql.com/downloads/installer/">download from here</a>
+- Node.js <a href="https://nodejs.org/en/download/">download from here</a>
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Installing
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+1. clone the repo to your local machine using git bash.
+   git clone https://github.com/C5-MarahShihadeh/Agents-On-Cloud-Task.git
 
-## Learn More
+2. install packages repeat this step in backend and frontend folder
+   npm i
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+3. Run the server using git bash inside backend folder
+   npm run dev
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+4. Run application using git bash inside frontend folder
+   npm run start
 
-### Code Splitting
+Now App ready to use
+![Home!](Images/Home.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## 🎈 Usage <a name="usage"></a>
 
-### Analyzing the Bundle Size
+* you don't have to register to navigate our web app.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+* you can click on the logo provided in the navigation bar to view the home section
+  ![Home!](Images/Home.png)
 
-### Making a Progressive Web App
+* you can click on add to cart button to add this product to your cart but you have to be one of our users, so you should craete an account.
+  if you have account =>
+  ![login!](Images/Login.png)
+    if you dont have account=>
+  ![regist!](Images/Regist.png)
+  add to Cart=>
+  ![Cart!](Images/AddToCart.png)
+ add to favorite=>
+  ![favorite!](Images/fav.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-### Advanced Configuration
+* you can view book in cart and increase and decrease amount and empty the whole books in cart if you want and you will see the total price.
+    
+* you can view book in favorite and remove it.
+    
+* you can view  more details about book by clicking on the image of the book and if the book was yours you can update or delete or add comment.
+      ![update/delete/comment](Images/update_delete.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
 
-### Deployment
+* To Add book click at sell book in the Navbar.
+  ![Add books](Images/AddBooks.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+* There is a pagination in the website each page limit for 6 books
+  ![Pagenation](Images/pagenation.png)
 
-### `npm run build` fails to minify
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+## ⛏️ Built Using <a name = "built_using"></a>
+
+- [MySQL](https://dev.mysql.com/downloads/installer//) - Database
+- [Express JS](https://expressjs.com/) - Server Framework
+- [React JS](https://https://reactjs.org/) - Web Framework
+- [Node JS](https://nodejs.org/en/) - Server Environment
+
+
+

@@ -160,7 +160,7 @@ const Homepage = () => {
                     variant="top"
                     src={element.img}
                   />
-                  <Card.Body>
+                  <Card.Body >
                     <Card.Title>{element.bookName}</Card.Title>
                   
                     <Card.Text style={{ height: "2rem" }}>

@@ -218,7 +218,7 @@ const Cart = () => {
                                   dispatch(decreasePrice(element.price));
                                 }}
                               >
-                                <AiOutlineMinus  />
+                                <AiOutlineMinus className="ai" />
                               </Button>
                               <p className="ammount">{element.amount}</p>
                               <Button variant="outline-dark"
