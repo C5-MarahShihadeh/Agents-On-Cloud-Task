@@ -35,7 +35,7 @@ function App() {
           element={
             <>
               <CollapsibleExample />
-              <Homepage />{" "}
+              <Homepage />
             </>
           }
         />
@@ -44,7 +44,7 @@ function App() {
           element={
             <>
               <CollapsibleExample />
-              <FavoriteList />{" "}
+              <FavoriteList />
             </>
           }
         />
@@ -52,7 +52,7 @@ function App() {
           path={"/cart"}
           element={
             <>
-              {" "}
+            
               <CollapsibleExample />
               <Cart />
             </>
@@ -63,11 +63,11 @@ function App() {
        
 
         <Route
-          path="/addBook"
+          path="/sell"
           element={
             <>
               <CollapsibleExample />
-              <AddBook />{" "}
+              <AddBook />
             </>
           }
         />

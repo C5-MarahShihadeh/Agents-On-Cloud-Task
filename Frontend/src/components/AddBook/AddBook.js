@@ -13,7 +13,6 @@ function AddBook() {
     const [img,setImg]=useState("");
     const [description,setDescription]=useState("");
     const [price,setPrice]=useState("");
-
     const navigate = useNavigate();
     const [page, setPage] = useState(1);
     const [message, setMessage] = useState("");
@@ -37,7 +36,7 @@ function AddBook() {
   
     const addBook=()=>{
         axios
-        .post(`http://localhost:5000/book/`, {bookName,img,description,price})
+        .post(`http://localhost:5000/book`, {bookName,img,description,price})
         .then((result) => {
           console.log(result.data.result, "addBook");
           dispatch(addbooks(result.data.result));
