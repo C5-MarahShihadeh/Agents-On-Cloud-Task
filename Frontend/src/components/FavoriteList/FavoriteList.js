@@ -87,7 +87,7 @@ const FavoriteList = () => {
   }, []);
   return (
     <div className="favorite_container">
-     <h4 style={{marginLeft:'1rem',marginTop:'1rem'}}>Your Reading List</h4>
+     <h4 style={{marginLeft:'1rem',marginTop:'1rem'}}>Your Favorite List</h4>
       {isLoggedIn ? (
         <>
           <div className="books">

@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import "./About-book.css";
-import { setbooks, setbookName, updatebooks } from "../../redux/reducers/books";
+import { setbooks, setbookName, updatebooks, deletebooks } from "../../redux/reducers/books";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
@@ -18,6 +18,8 @@ function ImgOverlayExample() {
   const [description, setDescription] = useState("");
   const [img, setImg] = useState("");
   const [price, setPrice] = useState("");
+  const [smShow, setSmShow] = useState(false);
+  const [lgShow, setLgShow] = useState(false);
   const navigate = useNavigate();
 
   const handleClose = () => setShow(false);
@@ -68,6 +70,34 @@ function ImgOverlayExample() {
         setMessage(err.message);
       });
   };
+
+
+  const deleteBook = (String) => {
+    axios
+      .put(
+        `http://localhost:5000/book/${String}`,
+        {},
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
+      .then((result) => {
+        dispatch(deletebooks());
+        gatBookById();
+
+      })
+      .catch((err) => {
+        console.log(err);
+        setMessage(err.message);
+      });
+  };
+
+
+
+
+
   useEffect(() => {
     gatBookById();
   }, []);
@@ -143,9 +173,34 @@ setPrice(e.target.value);
                         updatebooks(element.id);
                         handleClose();
                       }} variant="primary">Confirm</Button>
+                      
                     </Modal.Footer>
                   </Modal>
                 </>
+           <>
+                <Button onClick={()=>{
+                  
+                 setSmShow(true);
+                  
+                }} style={{marginLeft:"1rem"}}>Delete</Button>
+                <Modal
+        size="sm"
+        show={smShow}
+        onHide={() => setSmShow(false)}
+        aria-labelledby="example-modal-sizes-title-sm"
+      >
+        <Modal.Header closeButton>
+          <Modal.Title id="example-modal-sizes-title-sm">
+         Are you sure ?
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body  style={{marginLeft:"62%"}}>
+         
+          <Button onClick={()=>{
+                              deleteBook(element.id);
+
+          }}>Confirm</Button></Modal.Body>
+      </Modal></>
               </Card.Body>
             </Card>
           );
