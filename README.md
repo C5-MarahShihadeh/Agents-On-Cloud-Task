@@ -73,9 +73,11 @@ Now App ready to use
 
 
 * you can view book in cart and increase and decrease amount and empty the whole books in cart if you want and you will see the total price.
-    
+      ![Cart!](Images/Cart.png)
+
 * you can view book in favorite and remove it.
-    
+      ![favorite!](Images/favorite.png)
+
 * you can view  more details about book by clicking on the image of the book and if the book was yours you can update or delete or add comment.
       ![update/delete/comment](Images/update_delete.png)
 

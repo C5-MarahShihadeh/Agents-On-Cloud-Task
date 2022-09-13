@@ -6,8 +6,8 @@ const addAndUpdateToCart = (req, res) => {
   const book_id = req.params.book_id;
   const user_id = req.token.userId;
 
-  const query = `SELECT * FROM cart WHERE book_id=? AND user_id=? AND is_deleted = 0 `;
-  const data = [book_id, user_id];
+  const query = `SELECT * FROM cart WHERE book_id=? AND is_deleted = 0 `;
+  const data = [book_id];
   connection.query(query, data, (err, result) => {
     if (result.length) {
       result[0].amount = quantity + result[0].amount;
@@ -53,10 +53,9 @@ const addAndUpdateToCart = (req, res) => {
 const viewCart = (req, res) => {
   const user_id = req.token.userId;
 
-  const query = `SELECT book.id, bookName,img,price,amount FROM cart INNER JOIN book ON  cart.book_id =book.id WHERE user_id=? AND cart.is_deleted = 0  ;`;
-  const data = [user_id];
+  const query = `SELECT book.id, bookName,img,price,amount FROM cart INNER JOIN book ON  cart.book_id =book.id WHERE  cart.is_deleted = 0  ;`;
 
-  connection.query(query, data, (err, result) => {
+  connection.query(query, (err, result) => {
     if (err) {
       return res.status(500).json({
         success: false,

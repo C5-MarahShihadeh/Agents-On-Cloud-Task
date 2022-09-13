@@ -28,10 +28,9 @@ const addToFavorite = (req, res) => {
 const viewFavorite = (req, res) => {
   const user_id = req.token.userId;
 
-  const query = `SELECT book.id, bookName,img FROM favorite INNER JOIN  book ON  favorite.book_id =book.id WHERE user_id=? AND favorite.is_deleted = 0  ;`;
-  const data = [user_id];
+  const query = `SELECT book.id, bookName,img FROM favorite INNER JOIN  book ON  favorite.book_id =book.id WHERE favorite.is_deleted = 0  ;`;
 
-  connection.query(query, data, (err, result) => {
+  connection.query(query, (err, result) => {
     if (err) {
       return res.status(500).json({
         success: false,
@@ -50,10 +49,9 @@ const viewFavorite = (req, res) => {
 const viewFavoriteByUserId = (req, res) => {
   const user_id = req.params.user_id;
 
-  const query = `SELECT book.id, bookName,img FROM favorite INNER JOIN  book ON  favorite.book_id =book.id WHERE user_id=? AND favorite.is_deleted = 0  ;`;
-  const data = [user_id];
+  const query = `SELECT book.id, bookName,img FROM favorite INNER JOIN  book ON  favorite.book_id =book.id WHERE favorite.is_deleted = 0  ;`;
 
-  connection.query(query, data, (err, result) => {
+  connection.query(query,  (err, result) => {
     if (err) {
       return res.status(500).json({
         success: false,
